@@ -1,0 +1,16 @@
+
+Name: Samdup (Security Enthusiast)
+
+Brief Introduction: OSCP (Offensive Security Certified Professional) Exam
+
+Today's Agenda
+
+Set up Environment:
+    Download & Install Virtualbox  (link: https://www.virtualbox.org/)
+        Download & Install Virtualbox Extension (https://www.virtualbox.org/wiki/Downloads)
+    Download & Install Kali Linux  (https://www.kali.org/downloads/)
+    Download Kioptix (level 1-4). However, we will install only level 1  (https://www.vulnhub.com/?q=kioptrix&sort=date-asc&type=vm)
+
+    OSCP (https://www.offensive-security.com/information-security-certifications/oscp-offensive-security-certified-professional/)
+    OSCP Price: https://www.offensive-security.com/information-security-training/penetration-testing-training-kali-linux/
+***************************
