@@ -26,18 +26,19 @@ Step 02:
 
 Monologue: You can see there are few interesting ports are open; I will clean-up the output.
 
-```Cleaned Ouput
+#### Cleaned Ouput
 - 22/tcp    open  ssh     OpenSSH 6.7p1 Debian 5+deb8u4 (protocol 2.0)
 - 80/tcp    open  http    Apache httpd 2.4.10 ((Debian))
-- 111/tcp   open  rpcbind 2-4 (RPC #100000)
-| rpcinfo:
-|   program version   port/proto  service
-|   100000  2,3,4        111/tcp  rpcbind
-|   100000  2,3,4        111/udp  rpcbind
-|   100024  1          36544/udp  status
-|_  100024  1          37431/tcp  status
-- 37431/tcp open  status  1 (RPC #100024)
-and more```
+- 111/tcp   open  rpcbind 2-4 (RPC 100000)
+  - rpcinfo:
+     - program version   port/proto  service
+     - 100000  2,3,4        111/tcp  rpcbind
+     - 100000  2,3,4        111/udp  rpcbind
+     - 100024  1          36544/udp  status
+    - 100024  1          37431/tcp  status
+- 37431/tcp open  status  1 (RPC \#100024)
+#### and more
+***
 
 Step 03:
 - As usual, I am going to open the browser and gonna check the ip with robots.txt and try all the ports I got here. If I get anything interesting I will enclose the screenshot here.
