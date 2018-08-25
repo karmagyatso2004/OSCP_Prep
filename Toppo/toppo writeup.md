@@ -11,7 +11,7 @@ Step 0:
 
 Step 01: netdiscover -i eth1 -r 192.168.56.102/24
 
-- ![](https://github.com/samduk/OSCP_Prep/tree/master/Toppo/images/netdiscover.png)
+- ![](images/netdiscover.png)
 
 
 ### Scanning
@@ -22,7 +22,7 @@ Step 02:
 - ```nmap -sC -sV -A -p- 192.168.56.101 > nmap.txt```
 - ```cat nmap.txt```
 
-- ![](https://github.com/samduk/OSCP_Prep/tree/master/Toppo/images/nmap.png)
+- ![](images/nmap.png)
 
 Monologue: You can see there are few interesting ports are open; I will clean-up the output.
 
@@ -44,7 +44,7 @@ Step 03:
 - As usual, I am going to open the browser and gonna check the ip with robots.txt and try all the ports I got here. If I get anything interesting I will enclose the screenshot here.
 - I browse the 192.168.56.101  (default port 80).
 
-- ![](https://github.com/samduk/OSCP_Prep/tree/master/Toppo/images/p80.png)
+- ![](images/p80.png)
 
 - I didn't get anything on port 111 and 37431. (little skeptical in my mind that I am missing something here). Anyway, I will do a nikto with each of the port; and will report only when I find anything.
 
@@ -54,15 +54,15 @@ Step 04:
 - ```nikto -h 192.168.56.101 -p 37431 > nikto80.txt``` (no webserver found)
 - ```cat nikto80.txt```
 
-- ![](https://github.com/samduk/OSCP_Prep/tree/master/Toppo/images/nikto80.png)
+- ![](images/nikto80.png)
 
 Monologue: There is directory indexing
 - 192.168.56.101/admin
-- ![](https://github.com/samduk/OSCP_Prep/tree/master/Toppo/images/admin.png)
+- ![](images/admin.png)
 
 - We found an interesting notes.txt file as well
 
-- ![](https://github.com/samduk/OSCP_Prep/tree/master/Toppo/images/notes_in_admin.png)
+- ![](images/notes_in_admin.png)
 
 
 - ```Note to myself :
@@ -72,20 +72,20 @@ I need to change my password :/ 12345ted123 is too outdated but the technology i
 - username: ted or ted123 (my guess)
 
 - 192.168.56.101/img
-- ![](https://github.com/samduk/OSCP_Prep/tree/master/Toppo/images/img.png)
+- ![](images/img.png)
 
 Monologue: Although it looks harmless but I have seen stegnographed photo in the past. Therefore, I don't want to take chance. I am gonna download all and keep it for backup (further enumerate if I bump my head on the wall)
 
 - [about-bg](/imgs/about-bg.jpg), [contact-bg](imgs/contact-bg.jpg), [home-bg](/imgs/home-bg.jpg), [post-bg](/imgs/post-bg.jpg), [post-sample-image.jpg](/imgs/post-sample-image.jpg)
 
 - 192.168.56.101/mail
-- ![](https://github.com/samduk/OSCP_Prep/tree/master/Toppo/images/mail.png)
+- ![](images/mail.png)
 
 Monologue: Although there is a PHP file here but it doesn't do much. I will keep it a low priority.
 
-- 192.168.56.101/manual/https://github.com/samduk/OSCP_Prep/tree/master/Toppo/images/
+- 192.168.56.101/manual/images/
 
-- ![](https://github.com/samduk/OSCP_Prep/tree/master/Toppo/images/manual-https://github.com/samduk/OSCP_Prep/tree/master/Toppo/images.png)
+- ![](images/manual-images.png)
 
 Monologue: I am afraid it is just a rabbit hole ??!!
 
@@ -93,7 +93,7 @@ Monologue: I am afraid it is just a rabbit hole ??!!
 
 Monologue: Running Apache and version is 2.4
 
-- ![](https://github.com/samduk/OSCP_Prep/tree/master/Toppo/images/manual.png)
+- ![](images/manual.png)
 
 - 192.168.56.101/icons/README  (Nothing important)
 
@@ -119,7 +119,7 @@ Let's check google, exploit-db, nist, packet-storm, cve, anything .. but find a 
 
 Note: I tried both port 80 and port 111. (other port didn't give me anything)
 
-- ![](https://github.com/samduk/OSCP_Prep/tree/master/Toppo/images/exploited.png)
+- ![](images/exploited.png)
 
 Monologue: However it left me keep banging my head on table because my privilege escalation skill is rather rusty..
 Therefore, I thought why not I just keep a note of it and target some low hanging fruit?!!
@@ -133,13 +133,13 @@ Step 06:
 - ```ssh ted@192.168.56.101```
 - ```password: 12345ted123```
 
-- ![](https://github.com/samduk/OSCP_Prep/tree/master/Toppo/images/ssh.png)
+- ![](images/ssh.png)
 
 - Before I get drive into privilege escalation part, let me check in the sudoers' list
 
 - ```cat /etc/sudoers```
 
-- ![](https://github.com/samduk/OSCP_Prep/tree/master/Toppo/images/sudo.png)
+- ![](images/sudo.png)
 
 Monologue: To be honest, I am not sure why I need to check sudoers, but many a times while I play with Vulhub, it become like habbit to check the source code etc (in this case I totally forgot. Anyway.)
 
@@ -151,7 +151,7 @@ Monologue: To be honest, I am not sure why I need to check sudoers, but many a t
   - ```awk 'BEGIN {system("ls /root")}'```  (Yes, shows there is a flag, which is the main goal of this task)
   - ```awk 'BEGIN {system("cat /root/flag.txt")}'```
 
-  - ![](https://github.com/samduk/OSCP_Prep/tree/master/Toppo/images/flag.png)
+  - ![](images/flag.png)
 
 Note: ```Congratulations ! there is your flag :0wnedlab{p4ssi0n_c0me_with_pract1ce}```
 
