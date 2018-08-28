@@ -9,20 +9,20 @@
 
 ### Information Gathering
 
-Host Machine IP: 192.168.56.1 and 10.100.16.210
-Kali Machine IP: 192.168.56.102 and 10.0.2.15
-Target IP :  
+Host Machine IP: 192.168.56.1 and 10.100.16.210 <br />
+Kali Machine IP: 192.168.56.102 and 10.0.2.15 <br />
+Target IP :  192.168.56.103
 
 Monologue: It took me quite awhile to setup my network. So when you run into trouble with adapter setting don't worry. Either you change the adapter setting in the virtual machine on both the systems (attacker and target machines) and then do a restart or ```ifconfig eth0 down``` (your interface name may be different like eth1 or wlan0 or wlan1 etc) and then do ```ifconfig eth0 up``` will do the trick. I know this but I ran into rather peculiar problem ?!!
 
-- ```netdiscover -1 eth1 -r 192.168.56.102/24```
+- ```netdiscover -1 eth1 -r 192.168.56.103/24```
 
 - ![](images/netdiscover.png)
 
 
 ### Scanning
 
-- ```nmap -sC -sV -p- -A 192.168.56.102 > nmap.txt```
+- ```nmap -sC -sV -p- -A 192.168.56.103 > nmap.txt```
 
 - -sC script
 - -sV service version
@@ -55,7 +55,7 @@ Monologue: I can't see much infomration. Since it has both port 80 and 443 is ru
 
 Note: Since the machine is running webserver therefore I am going to run nikto and dirb (provided I didn't get what I want using nikto).
 
-- ```nikto -h 192.168.56.102 -p 80 > nikto.txt```
+- ```nikto -h 192.168.56.103 -p 80 > nikto.txt```
 
   - It is taking lot of time, I hope my wait is worth it :) Its been more than 30 minutes and I don't like this feeling. Therefore, although nikto scan was not completed. I openned a tab and did `cat nikto80.txt`  
 
@@ -75,7 +75,7 @@ Note: Since the machine is running webserver therefore I am going to run nikto a
 
   Monologue:  I am quite sure that you remember that along with our very first-key, we also downloaded a file called f-socity.dic
 
-  - ```nikto -h 192.168.56.102 -p 443 > nikto.txt```
+  - ```nikto -h 192.168.56.103 -p 443 > nikto.txt```
 
 
 
@@ -130,9 +130,9 @@ Through bruteforce I got the username: Elliot
 ***
 
 #### Information We have
-URL: http://192.168.56.103/wp-admin
-Username: Elliot
-Password: ER28-0652
+- URL: http://192.168.56.103/wp-admin
+- Username: Elliot
+- Password: ER28-0652
 
 ***
 
